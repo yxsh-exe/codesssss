@@ -1,5 +1,29 @@
 var tl = gsap.timeline();
 
+function time() {
+  var a = 0;
+  setInterval(function () {
+    a += Math.floor(Math.random() * 15);
+    if (a < 100) {
+      document.querySelector("#loader h1").innerHTML = a + "%";
+    } else {
+      a = 100;
+      document.querySelector("#loader h1").innerHTML = a + "%";
+    }
+  }, 150);
+}
+
+tl.to("#loader h1", {
+  delay: 0.5,
+  duration: 1,
+  onStart: time(),
+});
+tl.to("#loader", {
+  top: "-100vh",
+  duration: 0.5,
+  delay: 1,
+});
+
 tl.from("#nav img,#nav h3,#nav h4,#nav button", {
   y: -100,
   duration: 0.5,
